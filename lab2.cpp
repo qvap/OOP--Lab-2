@@ -1,8 +1,9 @@
 #include <iostream>
 
 class Point {
-    public:
+    private:
         int x, y;
+    public:
         Point(){
             printf("Point()\n");
             x = 0;
