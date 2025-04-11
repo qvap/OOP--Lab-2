@@ -35,7 +35,34 @@ void Point::reset(){
     printf("Reset Point\n");
     x = 0;
     y = 0;
-}
+};
+
+class ColoredPoint: public Point {
+    protected:
+        int color;
+    public:
+        ColoredPoint() : Point(){
+            printf("ColoredPoint()\n");
+            color = 0;
+        };
+        ColoredPoint(int x, int y, int color) : Point(x, y){
+            printf("ColoredPoint(int x, int y, int color)\n");
+            this->color = color;
+        };
+        ColoredPoint(const ColoredPoint &p){
+            printf("ColoredPoint(const ColoredPoint &p)\n");
+            color = p.color;
+            x = p.x;
+            y = p.y;
+        };
+        ~ColoredPoint(){
+            printf("%d, %d, color = %d\n", x, y, color);
+            printf("~ColoredPoint()\n");
+        };
+        void change_color(int new_color){
+            color = new_color;
+        };
+};
 
 int main(){
     {
@@ -62,6 +89,11 @@ int main(){
     p7->reset();
 
     delete p7;
+    //
+
+    //Класс-наследник
+    ColoredPoint *p8 = new ColoredPoint(1, 2, 42);
+    delete p8;
     //
 
     system("pause");
