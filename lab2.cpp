@@ -1,7 +1,7 @@
 #include <iostream>
 
 class Point {
-    private:
+    protected:
         int x, y;
     public:
         Point(){
@@ -22,8 +22,20 @@ class Point {
         ~Point(){
             printf("%d, %d\n", x, y);
             printf("~Point()\n");
-        }
+        };
+        void move(int dx, int dy){
+            printf("Point moved by %d, %d, new coordinates: %d, %d\n", dx, dy, x + dx, y + dy);
+            x = x + dx;
+            y = y + dy;
+        };
+        void reset();
 };
+
+void Point::reset(){
+    printf("Reset Point\n");
+    x = 0;
+    y = 0;
+}
 
 int main(){
     {
@@ -44,6 +56,13 @@ int main(){
     delete p6;
     //
 
+    // Перемещение и сброс объекта
+    Point *p7 = new Point(1, 2);
+    p7->move(10, 10);
+    p7->reset();
+
+    delete p7;
+    //
 
     system("pause");
     return 0;
