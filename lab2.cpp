@@ -140,6 +140,5 @@ int main(){
     delete s2;
     //
 
-    system("pause");
     return 0;
 }
